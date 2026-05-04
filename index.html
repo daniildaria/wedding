@@ -8,138 +8,143 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Inter', sans-serif;
-    background: #0b0b0d;
-    color: #fff;
+    margin: 0;
+    font-family: Inter, sans-serif;
+    background: #f7f6f2;
+    color: #1a1a1a;
     overflow-x: hidden;
+    cursor: none;
 }
 
-/* ===== PARALLAX HERO ===== */
+/* ===== CURSOR ===== */
+.cursor {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    background: rgba(212,175,55,0.5);
+    box-shadow: 0 0 18px rgba(212,175,55,0.35);
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+/* ===== ORNAMENT ===== */
+.ornament {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.25;
+    width: 220px;
+}
+
+/* ===== INTRO ===== */
+.intro {
+    position: fixed;
+    inset: 0;
+    background: #f7f6f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeOut 2s ease 3.5s forwards;
+}
+
+.intro h1 {
+    font-family: "Playfair Display";
+    font-size: 44px;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+}
+
+.intro p {
+    margin-top: 10px;
+    color: #666;
+    opacity: 0;
+    animation: fadeIn 2s ease 0.8s forwards;
+}
+
+/* ===== HERO ===== */
 .hero {
     height: 100vh;
-    position: relative;
-    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    top: -10%;
-    left: 0;
-    width: 100%;
-    height: 120%;
-    background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552');
-    background-size: cover;
-    background-position: center;
-    transform: translateY(0);
-    transition: transform 0.1s linear;
-    filter: brightness(0.55);
+    position: relative;
 }
 
 .hero-content {
-    position: relative;
-    z-index: 2;
-    animation: fadeIn 2s ease;
+    animation: fadeUp 1.5s ease;
 }
 
 .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 56px;
-    letter-spacing: 1px;
+    font-family: "Playfair Display";
+    font-size: 60px;
 }
 
 .hero p {
-    margin-top: 15px;
-    opacity: 0.85;
+    margin-top: 10px;
+    color: #666;
 }
 
-/* ===== SECTIONS ===== */
+/* ===== SECTION ===== */
 .section {
-    max-width: 900px;
+    max-width: 850px;
     margin: auto;
     padding: 80px 20px;
 }
 
 .title {
-    font-family: 'Playfair Display', serif;
-    font-size: 34px;
-    margin-bottom: 30px;
+    font-family: "Playfair Display";
+    font-size: 32px;
+    margin-bottom: 25px;
 }
 
-/* GLASS CARD */
+/* ===== CARD ===== */
 .card {
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 25px;
-    border-radius: 18px;
-    margin-bottom: 20px;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    background: rgba(255,255,255,0.07);
-}
-
-/* TIMER */
-.timer {
-    margin-top: 20px;
-    font-size: 20px;
-    opacity: 0.9;
-}
-
-/* MAP RESPONSIVE */
-.map {
-    position: relative;
-    width: 100%;
-    padding-top: 60%;
+    background: rgba(255,255,255,0.85);
+    border: 1px solid rgba(0,0,0,0.06);
+    padding: 22px;
     border-radius: 16px;
-    overflow: hidden;
-    margin-top: 15px;
+    margin-bottom: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
 }
 
-.map iframe {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 0;
+/* ===== RSVP BLOCK ===== */
+.rsvp {
+    text-align: center;
+    padding: 40px 20px;
 }
 
-/* BUTTON */
-.btn {
-    margin-top: 25px;
-    width: 100%;
-    padding: 14px;
-    border-radius: 12px;
-    border: none;
-    background: linear-gradient(135deg, #d4af37, #f2d57e);
-    color: #000;
+.rsvp p {
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: auto;
+}
+
+.highlight {
     font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
 }
 
-.btn:hover {
-    transform: scale(1.02);
+/* ===== MAP ===== */
+.map {
+    width: 100%;
+    height: 300px;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-top: 10px;
 }
 
-/* ANIMATION */
+/* ===== ANIMATION ===== */
 .fade {
     opacity: 0;
-    transform: translateY(40px);
-    transition: 1s ease;
+    transform: translateY(25px);
+    transition: 1s;
 }
 
 .fade.visible {
@@ -148,45 +153,73 @@ body {
 }
 
 @keyframes fadeIn {
+    to {opacity: 1;}
+}
+
+@keyframes fadeUp {
     from {opacity: 0; transform: translateY(20px);}
     to {opacity: 1; transform: translateY(0);}
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
-    .hero h1 {
-        font-size: 36px;
-    }
+@keyframes fadeOut {
+    to {opacity: 0; visibility: hidden;}
 }
 </style>
 </head>
 
 <body>
 
+<!-- CURSOR -->
+<div class="cursor"></div>
+
+<!-- ORNAMENT -->
+<svg class="ornament" viewBox="0 0 200 40">
+<path d="M10 20 C40 0, 60 0, 100 20 C140 40, 160 40, 190 20"
+stroke="#d4af37" fill="none" stroke-width="1"/>
+</svg>
+
+<!-- INTRO -->
+<div class="intro">
+    <h1>Даниил & Дарья</h1>
+    <p>Save the Date</p>
+</div>
+
 <!-- HERO -->
 <section class="hero">
     <div class="hero-content">
-        <h1>Даниил & Дарья</h1>
-        <p>Wedding Invitation</p>
-        <div class="timer" id="timer"></div>
-
-        <button class="btn" onclick="addWeddingToCalendar()">
-            Добавить в календарь
-        </button>
+        <h1>Save the Date</h1>
+        <p>18–19 июля 2026</p>
     </div>
 </section>
 
-<!-- EVENTS -->
+<!-- INVITATION -->
 <section class="section fade">
-    <div class="title">Программа дня</div>
+    <div class="title">Приглашение</div>
 
     <div class="card">
-        <h3>18 июля 2026</h3>
+        <p style="font-size:18px; line-height:1.7;">
+            Дорогие друзья и близкие,<br><br>
+
+            Мы с радостью приглашаем вас разделить с нами один из самых важных дней нашей жизни — день нашей свадьбы.<br><br>
+
+            В этот день мы скажем друг другу «да», будем смеяться, танцевать и создавать воспоминания, которые останутся с нами навсегда.<br><br>
+
+            Для нас очень важно, чтобы вы были рядом ❤️
+        </p>
+    </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="section fade">
+    <div class="title">Программа</div>
+
+    <div class="card">
+        <b>18 июля</b>
         <p>10:40 — Роспись в ЗАГСе</p>
     </div>
 
     <div class="card">
-        <h3>19 июля 2026</h3>
+        <b>19 июля</b>
         <p>16:00 — Сбор гостей</p>
         <p>Банкет и вечерняя программа</p>
     </div>
@@ -194,71 +227,56 @@ body {
 
 <!-- LOCATIONS -->
 <section class="section fade">
-    <div class="title">Локации</div>
+    <div class="title">Места проведения</div>
 
     <div class="card">
-        <h3>ЗАГС</h3>
+        <b>ЗАГС</b>
         <p>г. Липецк, ул. Ленина, 28</p>
 
         <div class="map">
-            <iframe src="https://yandex.ru/map-widget/v1/?ll=39.607275%2C52.612325&z=18"></iframe>
+            <iframe src="https://yandex.ru/map-widget/v1/?ll=39.607275%2C52.612325&z=17"
+            width="100%" height="100%" frameborder="0"></iframe>
         </div>
     </div>
 
     <div class="card">
-        <h3>Банкет</h3>
+        <b>Банкет</b>
         <p>Villa Park, Капитанщино</p>
 
         <div class="map">
-            <iframe src="https://yandex.ru/map-widget/v1/?ll=39.820411%2C52.721743&z=14"></iframe>
+            <iframe src="https://yandex.ru/map-widget/v1/?ll=39.820411%2C52.721743&z=14"
+            width="100%" height="100%" frameborder="0"></iframe>
         </div>
+    </div>
+</section>
+
+<!-- RSVP TEXT -->
+<section class="section fade">
+    <div class="title">Ответ на приглашение</div>
+
+    <div class="rsvp">
+        <p>
+            Пожалуйста, ответьте нам в сообщении:<br><br>
+
+            <span class="highlight">✔ Придёте ли вы на свадьбу?</span><br>
+            <span class="highlight">✔ Сколько гостей будет с вами?</span><br><br>
+
+            Это поможет нам всё красиво подготовить для вас ❤️
+        </p>
     </div>
 </section>
 
 <script>
 
-/* ===== PARALLAX ===== */
-window.addEventListener("scroll", () => {
-    document.querySelector(".hero::before");
-    const hero = document.querySelector(".hero::before");
+/* CURSOR */
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", e => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
 });
 
-/* ===== TIMER ===== */
-const date = new Date("July 18, 2026 10:40:00").getTime();
-
-setInterval(() => {
-    const now = new Date().getTime();
-    const diff = date - now;
-
-    const d = Math.floor(diff / (1000*60*60*24));
-    const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-    const m = Math.floor((diff % (1000*60*60)) / (1000*60));
-
-    document.getElementById("timer").innerHTML =
-        d + " дней " + h + " часов " + m + " минут";
-}, 1000);
-
-/* ===== CALENDAR ===== */
-function addWeddingToCalendar() {
-
-    const title = "Свадьба Даниил & Дарья 💍";
-    const location = "Липецк / Villa Park";
-
-    const start = "20260718T074000Z";
-    const end   = "20260719T170000Z";
-
-    const desc = "Программа свадебного дня: роспись, банкет, вечер";
-
-    const url = "https://www.google.com/calendar/render?action=TEMPLATE"
-        + "&text=" + encodeURIComponent(title)
-        + "&dates=" + start + "/" + end
-        + "&location=" + encodeURIComponent(location)
-        + "&details=" + encodeURIComponent(desc);
-
-    window.open(url, "_blank");
-}
-
-/* ===== SCROLL ANIMATION ===== */
+/* SCROLL FADE */
 const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
         if(e.isIntersecting) e.target.classList.add("visible");
