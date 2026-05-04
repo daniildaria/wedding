@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Даниил & Дарья — Свадьба</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0f0f10;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(15,15,16,0.6), rgba(15,15,16,0.9)),
+    url('https://images.unsplash.com/photo-1519741497674-611481863552') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+}
+
+.hero p {
+    margin-top: 15px;
+    opacity: 0.8;
+}
+
+/* SECTION */
+.section {
+    padding: 70px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+/* CARDS */
+.card {
+    background: #1a1a1c;
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+/* TIMER */
+.timer {
+    font-size: 22px;
+    margin-top: 20px;
+}
+
+/* FORM */
+input, textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border-radius: 12px;
+    border: none;
+    background: #222;
+    color: white;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #d4af37;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #f1c94a;
+}
+
+/* ANIMATION */
+.fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s;
+}
+
+.fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 34px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <h1>Даниил & Дарья</h1>
+        <p>Приглашаем вас на нашу свадьбу</p>
+        <div class="timer" id="timer"></div>
+    </div>
+</section>
+
+<!-- EVENTS -->
+<section class="section fade">
+    <div class="title">События</div>
+
+    <div class="card">
+        <h3>Роспись</h3>
+        <p>18 июля 2026 10:40</p>
+    </div>
+<section class="section fade">
+    <div class="title">Место</div>
+
+    <div class="card">
+        <p>г. Липецк, ул. Ленина, 28</p>
+        <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/upravleniye_zags_i_arkhivov_lipetskoy_oblasti_otdel_registratsii_aktov_grazhdanskogo_sostoyaniya/1056635936/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Управление ЗАГС и архивов Липецкой области, отдел регистрации актов гражданского состояния</a><a href="https://yandex.ru/maps/9/lipetsk/category/registery_office/184107242/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">ЗАГС в Липецке</a><iframe src="https://yandex.ru/map-widget/v1/?from=tableau_yabro&ll=39.607275%2C52.612325&mode=poi&poi%5Bpoint%5D=39.606867%2C52.612359&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D1056635936&z=18.62" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;">
+        </iframe>
+        </div>
+
+        </iframe>
+    </div>
+</section>
+    <div class="card">
+        <h3>Банкет</h3>
+        <p>19 июля 2026, 16:00</p>
+    </div>
+</section>
+
+<!-- LOCATION -->
+<section class="section fade">
+    <div class="title">Место</div>
+
+    <div class="card">
+        <p>c. Капитанщино</p>
+
+        <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/villa_park/3394578110/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Villa Park</a><a href="https://yandex.ru/maps/10712/lipetsk-oblast/category/banquet_hall/184108315/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Банкетный зал в Липецкой области</a><iframe src="https://yandex.ru/map-widget/v1/?from=tableau_yabro&ll=39.820411%2C52.721743&mode=search&oid=3394578110&ol=biz&sctx=ZAAAAAgBEAAaKAoSCR%2FbMuAs60NAEQlOfSB5W0pAEhIJBD3UtmEUzj8REvdY%2BtAFuT8iBgABAgMEBSgKOABA2FNIAWoCcnWdAc3MzD2gAQCoAQC9AXSQ0DfCAQW%2BzdTSDIICClZpbGxhIFBhcmuKAgCSAgCaAgxkZXNrdG9wLW1hcHM%3D&sll=39.820411%2C52.721743&sspn=0.077520%2C0.032238&text=Villa%20Park&z=14.1" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+    </div>
+</section>
+
+<!-- RSVP -->
+<section class="section fade">
+    <div class="title">Подтверждение участия</div>
+
+    <div class="card">
+        <form id="rsvpForm">
+            <input type="text" id="name" placeholder="Ваше имя" required>
+            <textarea id="message" placeholder="Комментарий (по желанию)"></textarea>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</section>
+
+<script>
+// ===== TIMER =====
+const date = new Date("July 18, 2026 12:00:00").getTime();
+
+setInterval(() => {
+    const now = new Date().getTime();
+    const diff = date - now;
+
+    const d = Math.floor(diff / (1000*60*60*24));
+    const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+
+    document.getElementById("timer").innerHTML =
+        d + " д " + h + " ч " + m + " мин";
+}, 1000);
+
+// ===== TELEGRAM SEND =====
+const TOKEN = "ВАШ_BOT_TOKEN";
+const CHAT_ID = "ВАШ_CHAT_ID";
+
+document.getElementById("rsvpForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const message = document.getElementById("message").value;
+
+    const text = `💍 Новое RSVP\nИмя: ${name}\nКомментарий: ${message}`;
+
+    fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: text
+        })
+    })
+    .then(() => {
+        alert("Спасибо! Мы получили ваш ответ ❤️");
+        document.getElementById("rsvpForm").reset();
+    })
+    .catch(() => alert("Ошибка отправки"));
+});
+
+// ===== ANIMATION =====
+const fades = document.querySelectorAll(".fade");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+        }
+    });
+});
+
+fades.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
