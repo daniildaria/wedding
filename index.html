@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Даниил & Дарья — Свадьба</title>
+<title>Даниил & Дарья — Wedding Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -16,91 +16,130 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: #0f0f10;
+    background: #0b0b0d;
     color: #fff;
     overflow-x: hidden;
 }
 
-/* HERO */
+/* ===== PARALLAX HERO ===== */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(15,15,16,0.6), rgba(15,15,16,0.9)),
-    url('https://images.unsplash.com/photo-1519741497674-611481863552') center/cover;
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
 
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552');
+    background-size: cover;
+    background-position: center;
+    transform: translateY(0);
+    transition: transform 0.1s linear;
+    filter: brightness(0.55);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 2s ease;
+}
+
 .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 48px;
+    font-size: 56px;
+    letter-spacing: 1px;
 }
 
 .hero p {
     margin-top: 15px;
-    opacity: 0.8;
+    opacity: 0.85;
 }
 
-/* SECTION */
+/* ===== SECTIONS ===== */
 .section {
-    padding: 70px 20px;
     max-width: 900px;
     margin: auto;
+    padding: 80px 20px;
 }
 
 .title {
     font-family: 'Playfair Display', serif;
-    font-size: 32px;
+    font-size: 34px;
     margin-bottom: 30px;
 }
 
-/* CARDS */
+/* GLASS CARD */
 .card {
-    background: #1a1a1c;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.08);
     padding: 25px;
-    border-radius: 20px;
+    border-radius: 18px;
     margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.07);
 }
 
 /* TIMER */
 .timer {
-    font-size: 22px;
     margin-top: 20px;
+    font-size: 20px;
+    opacity: 0.9;
 }
 
-/* FORM */
-input, textarea {
+/* MAP RESPONSIVE */
+.map {
+    position: relative;
     width: 100%;
-    padding: 14px;
-    margin: 10px 0;
-    border-radius: 12px;
-    border: none;
-    background: #222;
-    color: white;
+    padding-top: 60%;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 15px;
 }
 
-button {
+.map iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* BUTTON */
+.btn {
+    margin-top: 25px;
     width: 100%;
     padding: 14px;
-    border: none;
     border-radius: 12px;
-    background: #d4af37;
-    color: black;
-    font-weight: bold;
+    border: none;
+    background: linear-gradient(135deg, #d4af37, #f2d57e);
+    color: #000;
+    font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
 }
 
-button:hover {
-    background: #f1c94a;
+.btn:hover {
+    transform: scale(1.02);
 }
 
 /* ANIMATION */
 .fade {
     opacity: 0;
-    transform: translateY(30px);
-    transition: 1s;
+    transform: translateY(40px);
+    transition: 1s ease;
 }
 
 .fade.visible {
@@ -108,10 +147,15 @@ button:hover {
     transform: translateY(0);
 }
 
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
 /* MOBILE */
 @media (max-width: 600px) {
     .hero h1 {
-        font-size: 34px;
+        font-size: 36px;
     }
 }
 </style>
@@ -121,66 +165,66 @@ button:hover {
 
 <!-- HERO -->
 <section class="hero">
-    <div>
+    <div class="hero-content">
         <h1>Даниил & Дарья</h1>
-        <p>Приглашаем вас на нашу свадьбу</p>
+        <p>Wedding Invitation</p>
         <div class="timer" id="timer"></div>
+
+        <button class="btn" onclick="addWeddingToCalendar()">
+            Добавить в календарь
+        </button>
     </div>
 </section>
 
 <!-- EVENTS -->
 <section class="section fade">
-    <div class="title">События</div>
+    <div class="title">Программа дня</div>
 
     <div class="card">
-        <h3>Роспись</h3>
-        <p>18 июля 2026 10:40</p>
+        <h3>18 июля 2026</h3>
+        <p>10:40 — Роспись в ЗАГСе</p>
     </div>
-<section class="section fade">
-    <div class="title">Место</div>
 
     <div class="card">
-        <p>г. Липецк, ул. Ленина, 28</p>
-        <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/upravleniye_zags_i_arkhivov_lipetskoy_oblasti_otdel_registratsii_aktov_grazhdanskogo_sostoyaniya/1056635936/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Управление ЗАГС и архивов Липецкой области, отдел регистрации актов гражданского состояния</a><a href="https://yandex.ru/maps/9/lipetsk/category/registery_office/184107242/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">ЗАГС в Липецке</a><iframe src="https://yandex.ru/map-widget/v1/?from=tableau_yabro&ll=39.607275%2C52.612325&mode=poi&poi%5Bpoint%5D=39.606867%2C52.612359&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D1056635936&z=18.62" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;">
-        </iframe>
-        </div>
-
-        </iframe>
+        <h3>19 июля 2026</h3>
+        <p>16:00 — Сбор гостей</p>
+        <p>Банкет и вечерняя программа</p>
     </div>
 </section>
+
+<!-- LOCATIONS -->
+<section class="section fade">
+    <div class="title">Локации</div>
+
+    <div class="card">
+        <h3>ЗАГС</h3>
+        <p>г. Липецк, ул. Ленина, 28</p>
+
+        <div class="map">
+            <iframe src="https://yandex.ru/map-widget/v1/?ll=39.607275%2C52.612325&z=18"></iframe>
+        </div>
+    </div>
+
     <div class="card">
         <h3>Банкет</h3>
-        <p>19 июля 2026, 16:00</p>
-    </div>
-</section>
+        <p>Villa Park, Капитанщино</p>
 
-<!-- LOCATION -->
-<section class="section fade">
-    <div class="title">Место</div>
-
-    <div class="card">
-        <p>c. Капитанщино</p>
-
-        <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/villa_park/3394578110/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Villa Park</a><a href="https://yandex.ru/maps/10712/lipetsk-oblast/category/banquet_hall/184108315/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Банкетный зал в Липецкой области</a><iframe src="https://yandex.ru/map-widget/v1/?from=tableau_yabro&ll=39.820411%2C52.721743&mode=search&oid=3394578110&ol=biz&sctx=ZAAAAAgBEAAaKAoSCR%2FbMuAs60NAEQlOfSB5W0pAEhIJBD3UtmEUzj8REvdY%2BtAFuT8iBgABAgMEBSgKOABA2FNIAWoCcnWdAc3MzD2gAQCoAQC9AXSQ0DfCAQW%2BzdTSDIICClZpbGxhIFBhcmuKAgCSAgCaAgxkZXNrdG9wLW1hcHM%3D&sll=39.820411%2C52.721743&sspn=0.077520%2C0.032238&text=Villa%20Park&z=14.1" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
-    </div>
-</section>
-
-<!-- RSVP -->
-<section class="section fade">
-    <div class="title">Подтверждение участия</div>
-
-    <div class="card">
-        <form id="rsvpForm">
-            <input type="text" id="name" placeholder="Ваше имя" required>
-            <textarea id="message" placeholder="Комментарий (по желанию)"></textarea>
-            <button type="submit">Отправить</button>
-        </form>
+        <div class="map">
+            <iframe src="https://yandex.ru/map-widget/v1/?ll=39.820411%2C52.721743&z=14"></iframe>
+        </div>
     </div>
 </section>
 
 <script>
-// ===== TIMER =====
-const date = new Date("July 18, 2026 12:00:00").getTime();
+
+/* ===== PARALLAX ===== */
+window.addEventListener("scroll", () => {
+    document.querySelector(".hero::before");
+    const hero = document.querySelector(".hero::before");
+});
+
+/* ===== TIMER ===== */
+const date = new Date("July 18, 2026 10:40:00").getTime();
 
 setInterval(() => {
     const now = new Date().getTime();
@@ -191,48 +235,38 @@ setInterval(() => {
     const m = Math.floor((diff % (1000*60*60)) / (1000*60));
 
     document.getElementById("timer").innerHTML =
-        d + " д " + h + " ч " + m + " мин";
+        d + " дней " + h + " часов " + m + " минут";
 }, 1000);
 
-// ===== TELEGRAM SEND =====
-const TOKEN = "ВАШ_BOT_TOKEN";
-const CHAT_ID = "ВАШ_CHAT_ID";
+/* ===== CALENDAR ===== */
+function addWeddingToCalendar() {
 
-document.getElementById("rsvpForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+    const title = "Свадьба Даниил & Дарья 💍";
+    const location = "Липецк / Villa Park";
 
-    const name = document.getElementById("name").value;
-    const message = document.getElementById("message").value;
+    const start = "20260718T074000Z";
+    const end   = "20260719T170000Z";
 
-    const text = `💍 Новое RSVP\nИмя: ${name}\nКомментарий: ${message}`;
+    const desc = "Программа свадебного дня: роспись, банкет, вечер";
 
-    fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-            chat_id: CHAT_ID,
-            text: text
-        })
-    })
-    .then(() => {
-        alert("Спасибо! Мы получили ваш ответ ❤️");
-        document.getElementById("rsvpForm").reset();
-    })
-    .catch(() => alert("Ошибка отправки"));
-});
+    const url = "https://www.google.com/calendar/render?action=TEMPLATE"
+        + "&text=" + encodeURIComponent(title)
+        + "&dates=" + start + "/" + end
+        + "&location=" + encodeURIComponent(location)
+        + "&details=" + encodeURIComponent(desc);
 
-// ===== ANIMATION =====
-const fades = document.querySelectorAll(".fade");
+    window.open(url, "_blank");
+}
 
+/* ===== SCROLL ANIMATION ===== */
 const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add("visible");
-        }
+    entries.forEach(e => {
+        if(e.isIntersecting) e.target.classList.add("visible");
     });
 });
 
-fades.forEach(el => observer.observe(el));
+document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+
 </script>
 
 </body>
