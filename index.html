@@ -1,223 +1,236 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Даниил & Дарья — Wedding Invitation</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Даниил & Дарья</title>
 
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@300;400;500&family=Great+Vibes&display=swap');
-
-/* ===== BASE ===== */
-body {
-    margin: 0;
-    font-family: 'Manrope', sans-serif;
-      /* base color */
-     background-color: #f7f3ef;
-
-    background-image:
-        radial-gradient(circle at 20% 20%, rgba(255, 220, 180, 0.35), transparent 40%),
-        radial-gradient(circle at 80% 30%, rgba(212,175,55,0.15), transparent 45%),
-        radial-gradient(circle at 50% 80%, rgba(255,255,255,0.6), transparent 55%),
-        radial-gradient(circle at 30% 70%, rgba(255, 200, 220, 0.12), transparent 50%);
-
-    background-attachment: fixed;
+/* ===== LOCAL FONTS (GIT) ===== */
+@font-face {
+  font-family: "Shlapak Script";
+  src: url("./fonts/ShlapakScript.woff2") format("woff2");
 }
 
-}
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: url("https://www.transparenttextures.com/patterns/soft-wallpaper.png");
-    opacity: 0.25;
-    pointer-events: none;
-    z-index: 0;
+@font-face {
+  font-family: "Great Vibes";
+  src: url("./fonts/GreatVibes.woff2") format("woff2");
 }
 
-/* ===== CURSOR ===== */
-.cursor {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    background: rgba(212,175,55,0.4);
-    box-shadow: 0 0 16px rgba(212,175,55,0.3);
-    transform: translate(-50%, -50%);
-    z-index: 9999;
+/* ===== PAGE ===== */
+body{
+  margin:0;
+  background:#e9e1d6;
+  display:flex;
+  justify-content:center;
 }
 
-/* ===== ORNAMENT ===== */
-.ornament {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0.3;
-    width: 220px;
+.sheet{
+  width:100%;
+  max-width:420px;
+  background:#f7f1e8;
+  padding:22px 18px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.25);
+  font-family:serif;
+  position:relative;
+  overflow:hidden;
 }
 
-/* ===== INTRO ===== */
-.intro {
-    position: fixed;
-    inset: 0;
-    background: #f7f6f2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    animation: fadeOut 2s ease 3.5s forwards;
+/* watermark */
+.sheet::before{
+  content:"празднуем любовь празднуем любовь празднуем любовь празднуем любовь празднуем любовь празднуем любовь";
+  position:absolute;
+  inset:0;
+  font-family:"Great Vibes",cursive;
+  font-size:26px;
+  opacity:0.06;
+  transform:rotate(-18deg);
+  line-height:55px;
+  pointer-events:none;
 }
 
-/* ===== HANDWRITING SVG ===== */
-.name-writing {
-    width: 100%;
-    max-width: 700px;
+/* ===== SMALL TITLE ===== */
+.small-title{
+  font-size:12px;
+  opacity:0.7;
 }
 
-.name-writing text {
-    font-family: 'Great Vibes', cursive;
-    font-size: 70px;
-    fill: none;
-    stroke: #111;
-    stroke-width: 1.2;
-    stroke-dasharray: 1400;
-    stroke-dashoffset: 1400;
-    animation: writeText 3s ease forwards, fillIn 1s ease 2.5s forwards;
+/* ===== PHOTOS ===== */
+.photos{
+  position:relative;
+  height:200px;
+  margin-top:15px;
 }
 
-/* ===== HERO ===== */
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.polaroid{
+  position:absolute;
+  background:#fff;
+  padding:6px 6px 18px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
 }
 
-.hero h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 72px;
-    color: #111;
+.polaroid img{
+  width:85px;
+  height:105px;
+  object-fit:cover;
 }
 
-.hero p {
-    margin-top: 10px;
-    color: #555;
-    font-weight: 300;
-}
+.p1{left:18%;top:0;transform:rotate(-8deg)}
+.p2{left:48%;top:22px;transform:rotate(7deg)}
+.p3{left:72%;top:5px;transform:rotate(-3deg)}
 
-/* ===== SECTION ===== */
-.section {
-    max-width: 850px;
-    margin: auto;
-    padding: 80px 20px;
-}
-
-.title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 34px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    margin-bottom: 25px;
-}
-
-/* ===== CARD ===== */
-.card {
-    background: rgba(255,255,255,0.95);
-    border: 1px solid rgba(0,0,0,0.05);
-    padding: 24px;
-    border-radius: 16px;
-    margin-bottom: 16px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.03);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-3px);
+/* ===== NAMES ===== */
+.names{
+  font-family:"Great Vibes",cursive;
+  font-size:40px;
+  text-align:center;
+  transform:rotate(-6deg);
+  margin-top:10px;
 }
 
 /* ===== TEXT ===== */
-p {
-    font-weight: 300;
-    line-height: 1.8;
-    color: #333;
+.text{
+  text-align:center;
+  margin:18px 0;
+  font-size:14px;
+  line-height:1.5;
 }
 
-.card b {
-    font-weight: 500;
+/* ===== CALENDAR ===== */
+.month{
+  font-family:"Shlapak Script";
+  font-size:26px;
+  text-align:center;
+  margin-top:10px;
 }
 
-/* ===== INVITATION ===== */
-.invite-text p {
-    font-style: italic;
-    font-size: 18px;
+.calendar{
+  width:100%;
+  border-collapse:collapse;
+  text-align:center;
+  margin-top:10px;
 }
 
-/* ===== RSVP ===== */
-.rsvp p {
-    font-size: 18px;
-    line-height: 1.7;
+.calendar th{
+  font-size:12px;
+  opacity:0.7;
+  padding:6px 0;
 }
 
-/* ===== MAP ===== */
-.map {
-    width: 100%;
-    height: 300px;
-    border-radius: 14px;
-    overflow: hidden;
-    margin-top: 10px;
+.calendar td{
+  padding:12px 0;
+  border:1px solid rgba(0,0,0,0.08);
+  position:relative;
 }
 
-/* ===== ANIMATION ===== */
-.fade {
-    opacity: 0;
-    transform: translateY(25px);
-    transition: 1s ease;
+.heart{
+  position:absolute;
+  top:2px;
+  right:4px;
+  color:#c0392b;
 }
 
-.fade.visible {
-    opacity: 1;
-    transform: translateY(0);
+/* ===== PLACE TABLE ===== */
+.place-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
 }
 
-/* ===== KEYFRAMES ===== */
-@keyframes writeText {
-    to {
-        stroke-dashoffset: 0;
-    }
+.place-left{
+  width:55%;
+  vertical-align:middle;
+  text-align:left;
+  padding-right:10px;
 }
 
-@keyframes fillIn {
-    to {
-        fill: #111;
-    }
+.place-right{
+  width:45%;
 }
 
-@keyframes fadeOut {
-    to {
-        opacity: 0;
-        visibility: hidden;
-    }
+.place-right img{
+  width:100%;
+  border-radius:8px;
+  display:block;
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 600px) {
+.place-name{
+  font-size:14px;
+  margin-bottom:10px;
+}
 
-    .hero h1 {
-        font-size: 42px;
-    }
+.place-btn{
+  display:inline-block;
+  padding:8px 10px;
+  border:1px solid #2b2b2b;
+  text-decoration:none;
+  font-size:12px;
+  color:#2b2b2b;
+}
 
-    .name-writing text {
-        font-size: 42px;
-    }
+/* ===== TIMELINE ===== */
+.timeline{
+  font-size:14px;
+  text-align:left;
+  line-height:1.6;
+}
 
+/* ===== REQUESTS ===== */
+.request{
+  border:1px solid rgba(0,0,0,0.15);
+  padding:10px;
+  margin:8px 0;
+  font-size:13px;
+}
+
+/* ===== FORM ===== */
+form{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:10px;
+}
+
+label{
+  font-size:13px;
+}
+
+.radio-group{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  font-size:13px;
+}
+
+input{
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:8px;
+}
+
+button{
+  padding:10px;
+  background:#222;
+  color:white;
+  border:none;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  margin-top:25px;
+  text-align:center;
+}
+
+.footer img{
+  width:100%;
+  border-radius:8px;
+}
+
+.footer-text{
+  font-family:"Great Vibes",cursive;
+  font-size:28px;
+  margin-top:10px;
 }
 
 </style>
@@ -225,128 +238,101 @@ p {
 
 <body>
 
-<!-- CURSOR -->
-<div class="cursor"></div>
+<div class="sheet">
 
-<!-- ORNAMENT -->
-<svg class="ornament" viewBox="0 0 200 40">
-<path d="M10 20 C40 0, 60 0, 100 20 C140 40, 160 40, 190 20"
-stroke="#d4af37" fill="none" stroke-width="1"/>
-</svg>
+  <div class="small-title">у этих деток скоро свадьба</div>
 
-<!-- INTRO -->
-<div class="intro">
-    <svg class="name-writing" viewBox="0 0 600 120">
-        <text x="50%" y="60%" text-anchor="middle">
-            Приглашение
-        </text>
-    </svg>
-    
+  <!-- PHOTOS -->
+  <div class="photos">
+    <div class="polaroid p1"><img src="./img/1.jpg"></div>
+    <div class="polaroid p2"><img src="./img/2.jpg"></div>
+    <div class="polaroid p3"><img src="./img/3.jpg"></div>
+  </div>
+
+  <div class="names">Даниил & Дарья</div>
+
+  <div class="text">
+    Дорогие гости!<br>
+    Мы будем рады разделить этот день с вами.
+  </div>
+
+  <!-- CALENDAR -->
+  <div class="month">Июль</div>
+
+  <table class="calendar">
+    <tr>
+      <th>Пн</th><th>Вт</th><th>Ср</th><th>Чт</th><th>Пт</th><th>Сб</th><th>Вс</th>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>14</td>
+      <td>15</td>
+      <td>16</td>
+      <td>17</td>
+      <td>18 <span class="heart">❤️</span></td>
+      <td>19 <span class="heart">❤️</span></td>
+    </tr>
+  </table>
+
+  <!-- PLACE -->
+  <div class="text">Место встречи</div>
+
+  <table class="place-table">
+    <tr>
+      <td class="place-left">
+        <div class="place-name">Загородный клуб «Лесная сказка»</div>
+        <a class="place-btn" href="https://maps.google.com" target="_blank">Открыть карту</a>
+      </td>
+      <td class="place-right">
+        <img src="./img/place.jpg">
+      </td>
+    </tr>
+  </table>
+
+  <!-- TIMELINE -->
+  <div class="text">План дня</div>
+  <div class="timeline">
+    15:00 — Сбор гостей<br>
+    16:00 — Церемония<br>
+    18:00 — Банкет
+  </div>
+
+  <!-- REQUESTS -->
+  <div class="text">Просьбы</div>
+  <div class="request">Дресс-код: пастельные тона</div>
+  <div class="request">Без телефонов на церемонии</div>
+  <div class="request">Ваше присутствие — лучший подарок</div>
+
+  <!-- FORM -->
+  <div class="text">Анкета</div>
+
+  <form>
+    <label>Вы придёте?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="a"> Да</label>
+      <label><input type="radio" name="a"> Нет</label>
+    </div>
+
+    <label>Напиток</label>
+    <div class="radio-group">
+      <label><input type="radio" name="b"> Вино</label>
+      <label><input type="radio" name="b"> Сок</label>
+      <label><input type="radio" name="b"> Вода</label>
+    </div>
+
+    <label>Гостей</label>
+    <input type="number">
+
+    <button>Отправить</button>
+  </form>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <img src="./img/footer.jpg">
+    <div class="footer-text">празднуем любовь</div>
+  </div>
+
 </div>
-
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-content">
-        <h1>Даниил & Дарья</h1>
-        <p>18–19 июля 2026</p>
-    </div>
-</section>
-
-<!-- INVITATION -->
-<section class="section fade">
-    <div class="title">Приглашение</div>
-
-    <div class="card">
-        <p style="font-size:18px; line-height:1.7; font-style:italic;">
-            Дорогие друзья и близкие,<br><br>
-
-            Этот день мы запомним навсегда. И очень хотим, чтобы вы стали его частью, а не просто гостями. Те, чьи улыбки, объятия и смех заполнят пространство вокруг нас.<br><br>
-
-            Дресс-кода нет — мы будем рады видеть вас в любой цветовой гамме. Дети также приглашены: мы с удовольствием разделим этот день с вашими семьями.<br><br>
-
-            Теперь подробнее о свадебной программе
-        </p>
-    </div>
-</section>
-
-<!-- PROGRAM -->
-<section class="section fade">
-    <div class="title">Программа</div>
-
-    <div class="card">
-        <b>18 июля</b>
-        <p>10:40 — Роспись в ЗАГСе</p>
-        <p>по окончании — фуршет</p>
-    </div>
-
-    <div class="card">
-        <b>19 июля</b>
-        <p>16:00 — Сбор гостей</p>
-        <p>Банкет и вечерняя программа</p>
-    </div>
-</section>
-
-<!-- LOCATIONS -->
-<section class="section fade">
-    <div class="title">Места проведения</div>
-
-    <div class="card">
-        <b>ЗАГС</b>
-        <p>г. Липецк, ул. Ленина, 28</p>
-
-        <div class="map">
-            <iframe src="https://yandex.ru/map-widget/v1/?from=tableau_yabro&ll=39.607032%2C52.612337&mode=poi&poi%5Bpoint%5D=39.606867%2C52.612359&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D1056635936&z=17.76" width="100%" height="100%" frameborder="0"></iframe>
-        </div>
-    </div>
-
-    <div class="card">
-        <b>Банкет</b>
-        <p>Villa Park, Капитанщино</p>
-
-        <div class="map">
-            <iframe src="https://yandex.ru/map-widget/v1/?from=tableau_yabro&ll=39.820411%2C52.721743&mode=search&oid=3394578110&ol=biz&sctx=ZAAAAAgBEAAaKAoSCR%2FbMuAs60NAEQlOfSB5W0pAEhIJBD3UtmEUzj8REvdY%2BtAFuT8iBgABAgMEBSgKOABA2FNIAWoCcnWdAc3MzD2gAQCoAQC9AXSQ0DfCAQW%2BzdTSDIICClZpbGxhIFBhcmuKAgCSAgCaAgxkZXNrdG9wLW1hcHM%3D&sll=39.820411%2C52.721743&sspn=0.077520%2C0.032238&text=Villa%20Park&z=14.1" width="100%" height="100%" frameborder="0"></iframe>
-        </div>
-    </div>
-</section>
-
-<!-- RSVP TEXT -->
-<section class="section fade">
-    <div class="title">Ответ на приглашение</div>
-
-    <div class="rsvp">
-        <p>
-            Пожалуйста, ответьте нам в сообщении до 05 июня:<br><br>
-
-            <span class="highlight">✔ Придёте ли вы на свадьбу?</span><br>
-            <span class="highlight">✔ Сколько гостей с вами будет?</span><br>
-             <span class="highlight">✔ Возьмете ли своих детей?</span><br>
-            <br>
-
-            Ждем вас
-        </p>
-    </div>
-</section>
-
-<script>
-
-/* CURSOR */
-const cursor = document.querySelector(".cursor");
-
-document.addEventListener("mousemove", e => {
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
-});
-
-/* SCROLL FADE */
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-        if(e.isIntersecting) e.target.classList.add("visible");
-    });
-});
-
-document.querySelectorAll(".fade").forEach(el => observer.observe(el));
-
-</script>
 
 </body>
 </html>
